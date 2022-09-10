@@ -18,7 +18,7 @@ Ext.define('Dents.view.Login', {
 				xtype: 'textfield',
 				name: 'username',
 				id: 'username',
-				fieldLabel:'Käyttätunnus:',
+				fieldLabel:'Käyttäjätunnus:',
 				allowBlank: false,
 				padding:'10 10 0 10'
 				
