@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "dbuser";
-$password = "12345";
+$username = "user2";
+$password = "salasana";
 $dbname = "dents";
 
 // Create connection
