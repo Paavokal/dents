@@ -22,10 +22,33 @@ Ext.define('Dents.controller.Product', {
         
     },
 
-    searchProduct: function(record) {
-        console.log('clicked');
-        var data = record ? record.data: {};
-        this.getProductInfo().update(data);
+    searchProduct: function(button) {
+        var search = button.up('form').getValues();
+
+        //Pyyntö palvelimelle, tuotekoodi parametreissä
+        Ext.Ajax.request({
+            url: 'php/productsearch.php',
+            params: {
+                productcode: search.searchcode
+            },
+
+            success: function(response){
+                var text = Ext.decode(response.responseText);
+                var pi = Ext.ComponentQuery.query('#productinformation')[0];
+                var img = Ext.ComponentQuery.query('#tuotekuva')[0];
+
+                if (text.totalCount > 0) { 
+                    pi.up('panel').show();
+                    pi.update(text.results[0])
+                    img.setSrc('resources/' + text.results[0].productcode + '.png') //päivitetään tuotekuvan lähde
+                }
+                else{
+                    pi.up('panel').hide(); // Piiloitetaan tuoteinfo, jos ei löydy mitään
+                    
+                }
+            }
+            
+        });
 
     },
     

@@ -1,32 +1,35 @@
 Ext.define('Dents.view.ProductInfo', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.productinfo',
-    tpl: '<h1>Tuote: {artist}</h1><p>{description}</p>',
-
     initComponent: function() {
-        this.dockedItems = [{
+        this.hide()
+        this.items = [{
             xtype: 'container',
             layout: {
-                type: 'hbox',
-                align: 'middle',
-                pack: 'end'
+                type:'hbox'
             },
-            height: 100,
+            margin: 10,
+            padding:10,
+
             items: [{
                 xtype: 'component',
-                width: 200,
+                margin:'0 50 0 0',
                 itemId: 'productinformation',
-                tpl: '<h2>{productname}</h2><h1>{energy}</h1><h2>{weight}</h2>'
-            }]
+                tpl: '<h1>{productname}</h1> Tuotekoodi: {productcode} <br> Paino: {weight}g <br> Energia: {energy}g'
+            },
+            {
+                xtype:'image',
+                padding: 20,
+                itemId:'tuotekuva',
+                src:'',
+                height:300,
+  
+            }
+        ]
         }];
 
         this.callParent();
     },
 
-    
-    update: function(data) {
-        this.down('#productinformation').update(data);
-
-    }
 
 });

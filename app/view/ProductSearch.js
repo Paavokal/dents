@@ -8,13 +8,21 @@ Ext.define('Dents.view.ProductSearch', {
         items:[
             {
                 xtype: 'textfield',
-                fieldLabel: 'Tuotehaku',          
+                fieldLabel: 'Tuotehaku', 
+                name:'searchcode'     
             },
             {
                 xtype: 'button',
                 text: 'Hae',
             }
-        ]						
 
-    }]
+        ]
+        						
+
+    },{
+        xtype:'displayfield',
+        fieldStyle: 'color: #b78094;',
+        value:'*Esim 6420256001547'
+    }
+    ]
 });

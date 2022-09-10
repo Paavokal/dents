@@ -8,8 +8,10 @@ Ext.define('Dents.view.Main', {
 	requires:[
 		'Dents.view.ProductInfo',
 		'Dents.view.ProductSearch',
-		'Dents.view.ProductList'
+		'Dents.view.ProductList',
+		'Dents.store.ProductStore',
 	],
+
 
 	items: [
 		{

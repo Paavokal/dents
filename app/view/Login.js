@@ -26,6 +26,10 @@ Ext.define('Dents.view.Login', {
 				id: 'password',
 				fieldLabel:'Password',
 				allowBlank: false
+			},
+			{
+				xtype:'displayfield',
+				value:'paavo/paavo'
 			}
 			],
 			buttons:[
@@ -39,16 +43,19 @@ Ext.define('Dents.view.Login', {
 							method:'POST',
 
 							success: function(form, action) {
-								Ext.Msg.alert('Login', action.result.data);
 								localStorage.setItem("DentsLoggedIn", true);
-
-								//Suljetaan login-ikkuna ja avataan pääohjelma			
+								var loginWin = Ext.ComponentQuery.query('loginwindow')[0];
+								loginWin.destroy();
+								window.location.reload();
+								/*
+								Renderöinti ei toimi ilman viewportin uudelleen renderöintiä??
+								
 								var loginWin = Ext.ComponentQuery.query('loginwindow')[0];
 								loginWin.destroy();
 								
 								var vp = Ext.ComponentQuery.query('viewport')[0];
 								vp.add(Ext.widget('mainapp'));
-								vp.doLayout();
+								*/
 							},
 
 							failure: function(form, action) {

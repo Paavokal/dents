@@ -1,7 +1,6 @@
 Ext.define('Dents.view.ProductList', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.productlist',    
-    title: 'Products',
     store: 'ProductStore',
     renderTo: Ext.getBody(),
 
