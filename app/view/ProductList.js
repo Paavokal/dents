@@ -3,6 +3,15 @@ Ext.define('Dents.view.ProductList', {
     alias: 'widget.productlist',    
     store: 'ProductStore',
     renderTo: Ext.getBody(),
+    border:0,
+
+    viewConfig: {
+        listeners: {
+            refresh: function(grid) {
+                grid.panel.columns[1].autoSize();
+            }
+        }
+    },
 
     
     initComponent: function() {
@@ -10,10 +19,12 @@ Ext.define('Dents.view.ProductList', {
         this.columns = [
 
             {header: 'Tuotekoodi',  dataIndex: 'productcode'},
-            {header: 'Nimi', dataIndex: 'productname',width:100},
-            {header: 'Paino',  dataIndex: 'weight'},
-            {header: 'Energia',  dataIndex: 'energy'},
+            {header: 'Nimi', dataIndex: 'productname'},
+            {header: 'Paino (g)',  dataIndex: 'weight'},
+            {header: 'Energia (kcal)',  dataIndex: 'energy'},
         ];
+
+        
         
         this.callParent();
     }

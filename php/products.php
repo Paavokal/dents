@@ -3,6 +3,7 @@ $response = array();
 include('connect.php');
 
 
+
 $sql = "SELECT * FROM product";
 
 $result = $conn->query($sql);

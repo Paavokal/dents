@@ -12,6 +12,34 @@ Ext.define('Dents.view.Main', {
 		'Dents.store.ProductStore',
 	],
 
+	tbar: [
+		'->', //spacer -> napit oikeaan reunaan
+		{	
+			text:'Menu',
+			menu: {
+					xtype:'menu',
+					id:'itemMenu',
+					items:[
+						{text:'Nappi'},
+						{text:'Nappi 2'}
+					]
+					
+			}
+		},
+		{ 
+			//kirjaudu ulos
+			xtype: 'button', 
+			text: 'Kirjaudu ulos',
+			style:'background-color: #ffa9b6;',
+
+			handler: function() {
+				localStorage.removeItem("DentsLoggedIn");
+				window.location.reload();
+			}
+
+			
+		}
+    ],
 
 	items: [
 		{

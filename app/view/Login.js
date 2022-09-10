@@ -3,7 +3,7 @@ Ext.define('Dents.view.Login', {
     alias: 'widget.loginwindow',
 
 	bodyPadding: 10,
-	title: 'Login Window',
+	title: 'Kirjaudu',
 	closable: false,
 	autoShow: true,
 
@@ -11,30 +11,36 @@ Ext.define('Dents.view.Login', {
 	items: [
 		{	
 			xtype:'form',
+			
+
 			items:[
 			{
 				xtype: 'textfield',
 				name: 'username',
 				id: 'username',
-				fieldLabel:'Username',
-				allowBlank: false
+				fieldLabel:'Käyttätunnus:',
+				allowBlank: false,
+				padding:'10 10 0 10'
 				
 			},
 			{
 				xtype: 'textfield',
 				name: 'password',
 				id: 'password',
-				fieldLabel:'Password',
-				allowBlank: false
+				fieldLabel:'Salasana:',
+				allowBlank: false,
+				padding:'0 0 0 10'
 			},
 			{
 				xtype:'displayfield',
-				value:'paavo/paavo'
+				value:'paavo/paavo',
+				fieldStyle: 'color: #00000045;',
+				padding:'0 0 0 200'
 			}
 			],
 			buttons:[
 			{
-				text:'Login',
+				text:'Kirjaudu',
 				handler: function() {
 					var form = this.up('form').getForm()
 					if(form.isValid()) {
@@ -47,17 +53,7 @@ Ext.define('Dents.view.Login', {
 								var loginWin = Ext.ComponentQuery.query('loginwindow')[0];
 								loginWin.destroy();
 								window.location.reload();
-								/*
-								Renderöinti ei toimi ilman viewportin uudelleen renderöintiä??
-								
-								var loginWin = Ext.ComponentQuery.query('loginwindow')[0];
-								loginWin.destroy();
-								
-								var vp = Ext.ComponentQuery.query('viewport')[0];
-								vp.add(Ext.widget('mainapp'));
-								*/
 							},
-
 							failure: function(form, action) {
 								Ext.Msg.alert('Login', action.result ? action.result.data : 'No response');
 							}

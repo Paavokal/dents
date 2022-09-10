@@ -9,7 +9,8 @@ Ext.define('Dents.view.ProductSearch', {
             {
                 xtype: 'textfield',
                 fieldLabel: 'Tuotehaku', 
-                name:'searchcode'     
+                name:'searchcode',
+                itemId:'searchcode'     
             },
             {
                 xtype: 'button',

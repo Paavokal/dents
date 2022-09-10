@@ -9,14 +9,21 @@ Ext.define('Dents.controller.Product', {
     }, {
         ref: 'productSearch',
         selector: 'productsearch'
+    },{
+        ref: 'productList',
+        selector: 'productlist'
     }],
+    
 
     init: function() {
-        console.log('Controlleri up')
         this.control({
             'productsearch > fieldcontainer > button': {
                 click: this.searchProduct
+            },
+            'productlist': {
+                itemdblclick: this.searchByGrid
             }
+
         });
 
         
@@ -25,7 +32,7 @@ Ext.define('Dents.controller.Product', {
     searchProduct: function(button) {
         var search = button.up('form').getValues();
 
-        //Pyyntö palvelimelle, tuotekoodi parametreissä
+        //Pyyntö palvelimelle, parametreissa tuotekoodi
         Ext.Ajax.request({
             url: 'php/productsearch.php',
             params: {
@@ -51,6 +58,24 @@ Ext.define('Dents.controller.Product', {
         });
 
     },
+
+    searchByGrid: function(grid, record) {
+        var search = record.data.productcode
+        var form = Ext.ComponentQuery.query('productsearch')[0]; //form
+        var textField = Ext.ComponentQuery.query('#searchcode')[0]; //tekstikenttä
+        var btn = form.down('button') //nappi
+
+        var main = Ext.ComponentQuery.query('mainapp')[0]; //main 
+        main.setActiveTab(0);
+
+        textField.setValue(search) //päivitetään tekstikenttä
+        btn.btnEl.dom.click();  //klikataan hakunappia
+    
+ 
+
+    }
+
+
     
     
 });
