@@ -2,7 +2,7 @@ Ext.define('Dents.controller.Product', {
     extend: 'Ext.app.Controller',
     alias:'controller.product',
 
-    // selector = ComponentQuery() -> ref
+    // selector = ComponentQuery -> ref
     refs: [{
         ref: 'productInfo',
         selector: 'productinfo'
@@ -28,7 +28,7 @@ Ext.define('Dents.controller.Product', {
             'productlist': {
                 itemdblclick: this.searchByGrid
             },
-            'menu ->': {
+            'menu': {
                 click : this.menuClick
             }
 
