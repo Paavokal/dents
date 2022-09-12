@@ -44,10 +44,10 @@ Ext.define('Dents.view.Main', {
 	],
 
 	createMenu: function(){
-
+		
 		var menu = Ext.create('Ext.menu.Menu');
-
         var store = Ext.data.StoreManager.lookup('ProductStore');
+
 		store.load(function(records){
 			Ext.each(records, function(record){
 				menu.add({text: record.raw.productcode})
@@ -68,7 +68,6 @@ Ext.define('Dents.view.Main', {
 				{
 					//kirjaudu ulos
 					text: 'Kirjaudu ulos',
-
 					handler: function() {
 					localStorage.removeItem("DentsLoggedIn");
 					window.location.reload();

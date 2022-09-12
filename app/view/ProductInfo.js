@@ -1,7 +1,7 @@
 Ext.define('Dents.view.ProductInfo', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.productinfo',
-    
+
     initComponent: function() {
         this.hide()
         this.items = [{
@@ -16,7 +16,7 @@ Ext.define('Dents.view.ProductInfo', {
                 xtype: 'component',
                 margin:'0 50 0 0',
                 itemId: 'productinformation',
-                tpl: '<h1>{productname}</h1> Tuotekoodi: {productcode} <br> Paino: {weight}g <br> Energia: {energy}g'
+                tpl: '<h1>{productname}</h1> Tuotekoodi: {productcode} <br> Paino: {weight} g <br> Energia: {energy} kcal'
             },
             {
                 xtype:'image',

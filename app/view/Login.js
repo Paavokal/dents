@@ -29,7 +29,9 @@ Ext.define('Dents.view.Login', {
 				id: 'password',
 				fieldLabel:'Salasana:',
 				allowBlank: false,
-				padding:'0 0 0 10'
+				padding:'0 0 0 10',
+				inputType: 'password',
+
 			},
 			{
 				xtype:'displayfield',
