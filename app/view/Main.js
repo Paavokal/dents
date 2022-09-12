@@ -12,34 +12,11 @@ Ext.define('Dents.view.Main', {
 		'Dents.store.ProductStore',
 	],
 
-	tbar: [
-		'->', //spacer -> napit oikeaan reunaan
-		{	
-			text:'Menu',
-			menu: {
-					xtype:'menu',
-					id:'itemMenu',
-					items:[
-						{text:'Nappi'},
-						{text:'Nappi 2'}
-					]
-					
-			}
-		},
-		{ 
-			//kirjaudu ulos
-			xtype: 'button', 
-			text: 'Kirjaudu ulos',
-			style:'background-color: #ffa9b6;',
 
-			handler: function() {
-				localStorage.removeItem("DentsLoggedIn");
-				window.location.reload();
-			}
-
-			
-		}
-    ],
+	initComponent: function() {
+		this.createMenu();
+		this.callParent();
+	},
 
 	items: [
 		{
@@ -65,5 +42,50 @@ Ext.define('Dents.view.Main', {
 
 		}
 	],
+
+	createMenu: function(){
+
+		var menu = Ext.create('Ext.menu.Menu');
+
+        var store = Ext.data.StoreManager.lookup('ProductStore');
+		store.load(function(records){
+			Ext.each(records, function(record){
+				menu.add({text: record.raw.productcode})
+			})
+		})
+
+		this.tools = [{
+			xtype: 'button',
+			text: 'Menu',
+			floating: false,
+			renderTo: Ext.getBody(),
+			menu: [
+				{
+					text:'tuotteet',
+					menu:menu,
+					hideOnClick:false,
+				},
+				{
+					//kirjaudu ulos
+					text: 'Kirjaudu ulos',
+
+					handler: function() {
+					localStorage.removeItem("DentsLoggedIn");
+					window.location.reload();
+					}
+				}
+			]
+
+		  }];
+
+
+
+		
+
+	}
 	
 });
+
+
+
+

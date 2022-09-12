@@ -2,7 +2,7 @@ Ext.define('Dents.controller.Product', {
     extend: 'Ext.app.Controller',
     alias:'controller.product',
 
-
+    //selector = ComponentQuery -> ref
     refs: [{
         ref: 'productInfo',
         selector: 'productinfo'
@@ -12,7 +12,12 @@ Ext.define('Dents.controller.Product', {
     },{
         ref: 'productList',
         selector: 'productlist'
-    }],
+    },{
+        ref: 'menu',
+        selector: 'menu'
+    }
+
+    ],
     
 
     init: function() {
@@ -22,7 +27,13 @@ Ext.define('Dents.controller.Product', {
             },
             'productlist': {
                 itemdblclick: this.searchByGrid
+            },
+            'menu': {
+                click : this.menuClick
             }
+
+        
+
 
         });
 
@@ -70,9 +81,19 @@ Ext.define('Dents.controller.Product', {
 
         textField.setValue(search) //päivitetään tekstikenttä
         btn.btnEl.dom.click();  //klikataan hakunappia
+    },
     
- 
+    menuClick: function(item, record) {
+        var search = record.text
+        var form = Ext.ComponentQuery.query('productsearch')[0]; 
+        var textField = Ext.ComponentQuery.query('#searchcode')[0]; 
+        var btn = form.down('button') 
 
+        var main = Ext.ComponentQuery.query('mainapp')[0]; 
+        main.setActiveTab(0);
+
+        textField.setValue(search) 
+        btn.btnEl.dom.click();  
     }
 
 

@@ -50,8 +50,6 @@ Ext.define('Dents.view.Login', {
 
 							success: function(form, action) {
 								localStorage.setItem("DentsLoggedIn", true);
-								var loginWin = Ext.ComponentQuery.query('loginwindow')[0];
-								loginWin.destroy();
 								window.location.reload();
 							},
 							failure: function(form, action) {

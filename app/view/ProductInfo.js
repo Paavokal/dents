@@ -1,6 +1,7 @@
 Ext.define('Dents.view.ProductInfo', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.productinfo',
+    
     initComponent: function() {
         this.hide()
         this.items = [{
