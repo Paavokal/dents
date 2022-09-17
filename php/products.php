@@ -1,24 +1,24 @@
 <?php
-$response = array();
+
 include('connect.php');
-
-
 
 $sql = "SELECT * FROM product";
 
 $result = $conn->query($sql);
 
-while($row = $result->fetch_assoc()) {
-    array_push($response, $row);
-}
-
 $productlist = array();
 
-$productlist['success'] = true;
-$productlist['results'] = $response;
+//kyselyn jokainen rivi haetaan taulukkona ja lisätään productlist taulukkoon
+while($row = $result->fetch_assoc()) {
+    array_push($productlist, $row);
+}
 
-$productlist['totalCount'] = count( $productlist['results'] );
+$response = array();
 
-echo json_encode($productlist);
+$response['success'] = true;
+$response['results'] = $productlist;
+$response['totalCount'] = count( $response['results'] );
+
+echo json_encode($response);
 
 ?>

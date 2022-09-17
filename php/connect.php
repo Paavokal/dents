@@ -1,13 +1,15 @@
 <?php
+
+//Yhteyden asetukset
 $servername = "localhost";
 $username = "user2";
 $password = "salasana";
 $dbname = "dents";
 
-// Create connection
+// Luodaan yhteys
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Tarkastetaan yhteys
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }

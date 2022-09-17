@@ -16,7 +16,7 @@ Ext.define('Dents.view.ProductInfo', {
                 xtype: 'component',
                 margin:'0 50 0 0',
                 itemId: 'productinformation',
-                tpl: '<h1>{productname}</h1> Tuotekoodi: {productcode} <br> Paino: {weight} g <br> Energia: {energy} kcal'
+                tpl: '<h1>{productname}</h1> Tuotekoodi: {productcode} <br> Tuotepaino: {weight} g <br> Energiamäärä: {energy} kcal'
             },
             {
                 xtype:'image',

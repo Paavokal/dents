@@ -17,13 +17,13 @@ Ext.define('Dents.view.ProductSearch', {
                 text: 'Hae',
             }
 
-        ]
-        						
+        ]    						
 
     },{
         xtype:'displayfield',
         fieldStyle: 'color: #b78094;',
-        value:'*Esim 6420256001547'
+        value:'*Esim 6420256001547',
+        padding: '0 0 10 20'
     }
     ]
 });

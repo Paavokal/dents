@@ -7,12 +7,9 @@ Ext.define('Dents.view.Login', {
 	closable: false,
 	autoShow: true,
 
-	
 	items: [
 		{	
 			xtype:'form',
-			
-
 			items:[
 			{
 				xtype: 'textfield',
@@ -40,10 +37,14 @@ Ext.define('Dents.view.Login', {
 				padding:'0 0 0 200'
 			}
 			],
+
 			buttons:[
 			{
 				text:'Kirjaudu',
+				
 				handler: function() {
+
+					//haetaan form, jos OK, lähetetään POST palvelimelle
 					var form = this.up('form').getForm()
 					if(form.isValid()) {
 						form.submit({
@@ -52,7 +53,7 @@ Ext.define('Dents.view.Login', {
 
 							success: function(form, action) {
 								localStorage.setItem("DentsLoggedIn", true);
-								window.location.reload();
+								window.location.reload();	
 							},
 							failure: function(form, action) {
 								Ext.Msg.alert('Login', action.result ? action.result.data : 'No response');

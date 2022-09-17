@@ -4,23 +4,32 @@ Ext.define('Dents.view.Main', {
 	tabPosition: 'bottom',
 	title: 'Dents 0.1',
 	renderTo: Ext.getBody(),
+	tabBar: {
+		height:50,
+		defaults:{
+			height: 40,
+			width: 200,
+		}
+	},
 
 	requires:[
 		'Dents.view.ProductInfo',
 		'Dents.view.ProductSearch',
 		'Dents.view.ProductList',
 		'Dents.store.ProductStore',
+		'Dents.view.ProductFilter'
 	],
 
 
-	initComponent: function() {
+	initComponent: function() {	
 		this.createMenu();
 		this.callParent();
 	},
 
+
 	items: [
 		{
-			title: 'Tuotekysely',
+			title: 'Tuotehaku',
 			items:[{
 				xtype:'panel',
 				items:[{
@@ -35,22 +44,24 @@ Ext.define('Dents.view.Main', {
 			title: 'Tuotteet',
 			items:[
 				{
+					xtype:'productfilter'
+				},
+				{
 					xtype:'productlist'
-
-			}],
+				}
+			],
 
 
 		}
 	],
 
 	createMenu: function(){
-		
 		var menu = Ext.create('Ext.menu.Menu');
         var store = Ext.data.StoreManager.lookup('ProductStore');
 
 		store.load(function(records){
 			Ext.each(records, function(record){
-				menu.add({text: record.raw.productcode})
+				menu.add({text: record.raw.productcode});
 			})
 		})
 
@@ -61,9 +72,11 @@ Ext.define('Dents.view.Main', {
 			renderTo: Ext.getBody(),
 			menu: [
 				{
-					text:'tuotteet',
+					text:'Tuotteet',
 					menu:menu,
 					hideOnClick:false,
+					preventDefault:true,
+					itemId: 'productMenu'
 				},
 				{
 					//kirjaudu ulos
